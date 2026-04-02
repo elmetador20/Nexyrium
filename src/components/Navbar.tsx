@@ -64,29 +64,31 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <button className="md:hidden text-white p-2 relative z-[60]" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`fixed inset-0 bg-black z-40 transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-10 ${isOpen ? "translate-y-0" : "-translate-y-full"}`}>
-        <button className="absolute top-8 right-8 text-white" onClick={() => setIsOpen(false)}>
-          <X className="w-8 h-8" />
-        </button>
+      <div className={`fixed inset-0 bg-black z-50 transition-all duration-500 md:hidden flex flex-col items-center justify-center gap-10 ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}>
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.href}
-            className="text-2xl font-display font-medium text-white hover:text-gold transition-colors"
+            className="text-3xl font-display font-bold text-white hover:text-gold transition-colors tracking-tighter"
             onClick={() => setIsOpen(false)}
           >
             {link.name}
           </Link>
         ))}
-        <button className="mt-4 button-primary text-lg px-12 py-5" onClick={() => setIsOpen(false)}>
+        <button className="mt-8 button-primary text-lg px-12 py-5" onClick={() => setIsOpen(false)}>
           Book a Free Call
         </button>
+
+        {/* Visual Decoration for Mobile Menu */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-gray-800 font-black text-[10px] tracking-[0.4em] uppercase">
+           Nexyrium © 2026
+        </div>
       </div>
     </nav>
   );
