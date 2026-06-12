@@ -15,7 +15,7 @@ export default function Home() {
       <div id="services-anchor" className="h-0" />
       <ProblemSolution />
       <Services />
-      <Pricing />
+      {/* <Pricing /> */}
       <HowItWorks />
       <Testimonials />
       <CTASection />
